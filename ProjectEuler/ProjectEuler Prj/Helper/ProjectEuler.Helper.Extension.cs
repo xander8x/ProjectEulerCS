@@ -5,7 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectEuler_Prj.Helper
+namespace ProjectEuler.Helper
 {
     public static partial class ProjectEulerHelper
     {
