@@ -47,6 +47,7 @@
     <Compile Include="Helper\ProjectEuler.Helper.Extension.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Primes.cs" />
     <Compile Include="Helper\ProblemAttribute.cs" />
+    <Compile Include="Problems\001-050\Problem_001.cs" />
     <Compile Include="Problems\ProblemBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,8 +55,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Problems\001-050\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
