@@ -10,6 +10,11 @@ namespace ProjectEuler.Helper
 {
     public static partial class ProjectEulerHelper
     {
+        /// <summary>
+        /// Returns the largest prime factor o a number.
+        /// </summary>
+        /// <param name="value">Value whose largest prime factor is computed.</param>
+        /// <returns>Largest prime factor of <paramref name="value"/></returns>
         public static BigInteger LargestPrimeFactor(this BigInteger value)
         {
             BigInteger result = BigInteger.MinusOne;

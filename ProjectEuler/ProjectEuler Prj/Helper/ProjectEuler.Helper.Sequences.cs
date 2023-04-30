@@ -37,19 +37,32 @@ namespace ProjectEuler.Helper
                 yield return sum;
             }
         }
-
+        /// <summary>
+        /// Fibonacci sequence limited by input value.
+        /// </summary>
+        /// <param name="limitOn">Limit of max value sequence.</param>
+        /// <returns>Fibonacci sequence limited by <paramref name="limitOn"/>.</returns>
         public static IEnumerable<BigInteger> GetFibonacciSequenceLimitedOnMaxValue(BigInteger limitOn)
         {
             Func<BigInteger, bool> _limit = new Func<BigInteger, bool>((v) => { return v > limitOn; });
             return FibonacciSequence(_limit, null);
         }
 
-        public static IEnumerable<BigInteger> GetFibonacciSequenceLimitedOnValue(Func<BigInteger, bool> limitOn)
+        /// <summary>
+        /// Fibonacci sequence limited by input predicate.
+        /// </summary>
+        /// <param name="predicateLimitOn">Predicate fo limit.</param>
+        /// <returns>Fibonacci sequence limited by <paramref name="predicateLimitOn"/>.</returns>
+        public static IEnumerable<BigInteger> GetFibonacciSequenceLimitedOnValue(Func<BigInteger, bool> predicateLimitOn)
         {
-
-            return FibonacciSequence(limitOn, null);
+            return FibonacciSequence(predicateLimitOn, null);
         }
 
+        /// <summary>
+        /// Fibonacci sequence limited in term of number of items of it.
+        /// </summary>
+        /// <param name="limitOn">Item limits</param>
+        /// <returns>Fibonacci sequence limited by <paramref name="limitOn"/>.</returns>
         public static IEnumerable<BigInteger> GetFibonacciSequenceLimitedOnMaxSize(BigInteger limitOn)
         {
             Func<BigInteger, bool> _limit = new Func<BigInteger, bool>((v) => { return v > limitOn; });

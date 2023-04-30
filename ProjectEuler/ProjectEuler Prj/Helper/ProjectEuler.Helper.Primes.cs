@@ -10,6 +10,12 @@ namespace ProjectEuler.Helper
 {
     public static partial class ProjectEulerHelper
     {
+        /// <summary>
+        /// Get list of primes below a limit.
+        /// </summary>
+        /// <param name="limit">Limit of prime.</param>
+        /// <returns>Primes up to limit.</returns>
+        /// <exception cref="Exception">Raise exception </exception>
         public static IEnumerable<BigInteger> GetPrimes(int limit)
         {
             BitArray PrimeBits = new BitArray(limit, true);
@@ -40,6 +46,11 @@ namespace ProjectEuler.Helper
 
         }
 
+        /// <summary>
+        /// Check input value is a prime number.
+        /// </summary>
+        /// <param name="value">Value whose check if prime is computed.</param>
+        /// <returns>True when the input value is a prime number, false otherwise.</returns>
         public static bool IsPrime(BigInteger value)
         {
             if (value <= 1) return false;
