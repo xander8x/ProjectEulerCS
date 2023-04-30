@@ -51,7 +51,7 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="value">Value whose check if prime is computed.</param>
         /// <returns>True when the input value is a prime number, false otherwise.</returns>
-        public static bool IsPrime(BigInteger value)
+        public static bool IsPrime(this BigInteger value)
         {
             if (value <= 1) return false;
             if (value == 2) return true;
@@ -68,5 +68,16 @@ namespace ProjectEuler.Helper
             return true;
         }
 
+        /// <summary>
+        /// Get n-th number prime.
+        /// </summary>
+        /// <param name="n">Value whose n-th prime is computed.</param>
+        /// <returns>N-th prime defined by <paramref name="n"/>.</returns>
+        public static BigInteger GetNthPrime(int n)
+        {
+            var log_n = BigInteger.Log(n);
+            var limit = (int)(n * (log_n + Math.Log(log_n) - 0.5));
+            return GetPrimes(limit).Skip(n).First();           
+        }
     }
 }
