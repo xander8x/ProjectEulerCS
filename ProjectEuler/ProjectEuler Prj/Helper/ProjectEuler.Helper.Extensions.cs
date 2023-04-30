@@ -16,6 +16,8 @@ namespace ProjectEuler.Helper
         /// <returns>Square root of <paramref name="value"/>.</returns>
         public static double Sqrt(this BigInteger value)
         {
+            if (value < 0) throw new ArgumentException("The input value cannot be negative.");
+
             return Math.Pow(Math.E, BigInteger.Log(value) / 2.0F);
         }
 
