@@ -9,13 +9,31 @@ namespace ProjectEuler.Helper
 {
     public static partial class ProjectEulerHelper
     {
+        /// <summary>
+        /// Returns the square root of a number.
+        /// </summary>
+        /// <param name="value">Value whose square root is computed.</param>
+        /// <returns>Square root of <paramref name="value"/>.</returns>
         public static double Sqrt(this BigInteger value)
         {
-            double retValue = 0.0F;
+            return Math.Pow(Math.E, BigInteger.Log(value) / 2.0F);
+        }
 
-            retValue = Math.Pow(Math.E, BigInteger.Log(value) / 2.0F);
+        /// <summary>
+        /// Check whether input value is palindrome or not.
+        /// </summary>
+        /// <param name="value">Value whose check if palindrome is computed.</param>
+        /// <returns>Returns true if the given number is a palindrome, else false.</returns>
+        public static bool IsPalindrome(this BigInteger value)
+        {
+            bool result = false;
 
-            return retValue;
+            var valueString = value.ToString();
+            var length = valueString.Length;
+            var endCheck = (int)Math.Truncate(length / 2.0F);
+
+            result = Enumerable.Range(0, endCheck).All(i => valueString[i] == valueString[length - i - 1]);
+            return result;
         }
     }
 }
