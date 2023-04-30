@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D2952DD3-C2A0-421C-8939-28508B3682F3}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ProjectEuler_Prj</RootNamespace>
-    <AssemblyName>ProjectEuler Prj</AssemblyName>
+    <RootNamespace>ProjectEuler</RootNamespace>
+    <AssemblyName>ProjectEuler</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,11 +47,15 @@
     <Compile Include="Helper\ProjectEuler.Helper.Extension.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Primes.cs" />
     <Compile Include="Helper\ProblemAttribute.cs" />
+    <Compile Include="Problems\ProblemBase.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Problems\001-050\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
