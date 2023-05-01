@@ -103,24 +103,33 @@ namespace ProjectEuler.Helper
         /// <returns>Sum of factors of <paramref name="x"/>.</returns>
         public static BigInteger SumFactors(this BigInteger x)
         {
-            int sqrtOfNumber = (int)x.Sqrt();
-            BigInteger sum = 1;
+            if (x == 1)
+                return BigInteger.One;
 
-            if (x == sqrtOfNumber * sqrtOfNumber)
-            {
-                sum += sqrtOfNumber;
-                sqrtOfNumber--;
-            }
+            BigInteger result = BigInteger.Zero;
 
-            for (int i = 2; i <= sqrtOfNumber; i++)
+            for (int i = 2; i <= x.Sqrt(); i++)
             {
                 if (x % i == 0)
                 {
-                    sum = sum + i + (x / i);
+                    if (i == (x / i))
+                        result += i;
+                    else
+                        result += (i + x / i);
                 }
             }
 
-            return sum;
+            return (result + x + 1);
+        }
+
+        /// <summary>
+        /// Returns sum of proper factors.
+        /// </summary>
+        /// <param name="value">Value whose sum of proper factor is computed.</param>
+        /// <returns>Sum of proper factor.</returns>
+        public static BigInteger SumProperFactors(this BigInteger value)
+        {
+            return SumFactors(value) - value;
         }
 
     }
