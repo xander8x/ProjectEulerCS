@@ -81,7 +81,7 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="x">Value whose extract list of factors is coputed.</param>
         /// <returns>List of factors belong to <paramref name="x"/>.</returns>
-        public static IEnumerable<BigInteger> Factors(this BigInteger x)
+        public static IEnumerable<BigInteger> Divisors(this BigInteger x)
         {
             for (BigInteger i = 1; i * i <= x; i++)
             {
@@ -101,25 +101,9 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="x">Value whose sum of factors is computed.</param>
         /// <returns>Sum of factors of <paramref name="x"/>.</returns>
-        public static BigInteger SumFactors(this BigInteger x)
+        public static BigInteger SumOfAllDivisors(this BigInteger x)
         {
-            if (x == 1)
-                return BigInteger.One;
-
-            BigInteger result = BigInteger.Zero;
-
-            for (int i = 2; i <= x.Sqrt(); i++)
-            {
-                if (x % i == 0)
-                {
-                    if (i == (x / i))
-                        result += i;
-                    else
-                        result += (i + x / i);
-                }
-            }
-
-            return (result + x + 1);
+            return x.Divisors().Aggregate(BigInteger.Zero, (a, b) => a + b);
         }
 
         /// <summary>
@@ -127,9 +111,9 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="value">Value whose sum of proper factor is computed.</param>
         /// <returns>Sum of proper factor.</returns>
-        public static BigInteger SumProperFactors(this BigInteger value)
+        public static BigInteger SumProperDivisors(this BigInteger value)
         {
-            return SumFactors(value) - value;
+            return SumOfAllDivisors(value) - value;
         }
 
     }

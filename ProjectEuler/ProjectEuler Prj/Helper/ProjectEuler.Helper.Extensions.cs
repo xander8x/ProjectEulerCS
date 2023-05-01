@@ -14,11 +14,22 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="value">Value whose square root is computed.</param>
         /// <returns>Square root of <paramref name="value"/>.</returns>
-        public static double Sqrt(this BigInteger value)
+        public static double Sqrt(this BigInteger number)
         {
-            if (value < 0) throw new ArgumentException("The input value cannot be negative.");
+            const int limitSQRT = 10;
 
-            return Math.Pow(Math.E, BigInteger.Log(value) / 2.0F);
+            if (number < 0) throw new ArgumentException("Input value cannot be a negative value.");
+
+
+            double[] values = new double[limitSQRT];
+            var num = (double)number;
+            values[0] = num * 0.5;
+            for (int i = 1; i < limitSQRT; i++)
+            {
+                values[i] = 0.5F * (values[i - 1] + num / values[i - 1]);
+            }
+
+            return values[limitSQRT - 1];
         }
 
         /// <summary>
@@ -45,7 +56,7 @@ namespace ProjectEuler.Helper
         /// <returns>Returns true if the input value is abundant; false otherwise.</returns>
         public static bool IsAbundant(this BigInteger value)
         {
-            return (ProjectEulerHelper.SumProperFactors(value) > value);
+            return (ProjectEulerHelper.SumProperDivisors(value) > value);
         }
     }
 }
