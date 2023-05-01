@@ -29,6 +29,12 @@ namespace ProjectEuler.Helper
         public static Func<BigInteger, BigInteger> TetrahedralNumber = (n) => (n * (n + 1) * (n + 2)) / 6;
 
         /// <summary>
+        /// Returns the n-th Collatz number. 
+        /// </summary>
+        /// <seealso cref="https://en.wikipedia.org/wiki/Collatz_conjecture"/>
+        public static Func<BigInteger, BigInteger> CollatzNumber = (n) => (n.IsEven) ? n / 2 : 3 * n + 1;
+
+        /// <summary>
         /// Returns sum of square of the first n natural numbers.
         /// </summary>
         /// <param name="n"></param>
