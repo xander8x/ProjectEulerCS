@@ -50,13 +50,33 @@ namespace ProjectEuler.Helper
         }
 
         /// <summary>
-        /// Check whether input value is abundant or not.
+        /// Check whether input value is abundant number or not.
         /// </summary>
         /// <param name="value">Value whose check if a abundant number is evaluated.</param>
         /// <returns>Returns true if the input value is abundant; false otherwise.</returns>
         public static bool IsAbundant(this BigInteger value)
         {
             return (ProjectEulerHelper.SumProperDivisors(value) > value);
+        }
+
+        /// <summary>
+        /// Check whether input value is deficient number or not.
+        /// </summary>
+        /// <param name="value">Value whose check if a abundant number is evaluated.</param>
+        /// <returns>Returns true if the input value is abundant; false otherwise.</returns>
+        public static bool IsDeficient(this BigInteger value)
+        {
+            return (ProjectEulerHelper.SumProperDivisors(value) < value);
+        }
+
+        /// <summary>
+        /// Check whether input value is a Perfect Number or not.
+        /// </summary>
+        /// <param name="value">Value whose check if a abundant number is evaluated.</param>
+        /// <returns>Returns true if the input value is abundant; false otherwise.</returns>
+        public static bool IsPerfectNumber(this BigInteger value)
+        {
+            return (ProjectEulerHelper.SumProperDivisors(value) == value);
         }
     }
 }
