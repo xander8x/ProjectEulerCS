@@ -29,10 +29,10 @@ Evaluate the sum of all the amicable numbers under 10000.",
 
             for (BigInteger i = 2; i <= 10000; i++)
             {
-                factorsi = ProjectEulerHelper.SumFactors(i);
+                factorsi = sumFactors(i);
                 if (factorsi > i && factorsi <= 10000)
                 {
-                    factorsj = ProjectEulerHelper.SumFactors(factorsi);
+                    factorsj = sumFactors(factorsi);
                     if (factorsj == i)
                     {
                         sumAmicible += i + factorsi;
@@ -41,6 +41,29 @@ Evaluate the sum of all the amicable numbers under 10000.",
             }
 
             return sumAmicible;
+        }
+
+
+        private static BigInteger sumFactors(BigInteger x)
+        {
+            int sqrtOfNumber = (int)x.Sqrt();
+            BigInteger sum = 1;
+
+            if (x == sqrtOfNumber * sqrtOfNumber)
+            {
+                sum += sqrtOfNumber;
+                sqrtOfNumber--;
+            }
+
+            for (int i = 2; i <= sqrtOfNumber; i++)
+            {
+                if (x % i == 0)
+                {
+                    sum = sum + i + (x / i);
+                }
+            }
+
+            return sum;
         }
     }
 }
