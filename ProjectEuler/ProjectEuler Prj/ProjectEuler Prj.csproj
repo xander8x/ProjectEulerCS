@@ -47,6 +47,7 @@
     <Compile Include="Helper\ProjectEuler.Helper.Extensions.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Factors.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Linq.cs" />
+    <Compile Include="Helper\ProjectEuler.Helper.Math.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Numbers.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Primes.cs" />
     <Compile Include="Helper\ProblemAttribute.cs" />
