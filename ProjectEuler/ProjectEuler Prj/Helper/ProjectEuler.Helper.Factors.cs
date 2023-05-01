@@ -95,5 +95,30 @@ namespace ProjectEuler.Helper
                 }
             }
         }
+
+        /// <summary>
+        /// Returns sum of factors of input value.
+        /// </summary>
+        /// <param name="x">Value whose sum of factors is computed.</param>
+        /// <returns>Sum of factors of <paramref name="x"/>.</returns>
+        public static BigInteger SumFactors(this BigInteger x)
+        {
+            BigInteger sum = BigInteger.Zero;
+
+            for (BigInteger i = 1; i * i <= x; i++)
+            {
+                if (0 == (x % i))
+                {
+                    sum += i;
+                    if (i != (x / i))
+                    {
+                        sum += x / i;
+                    }
+                }
+            }
+
+            return sum;
+        }
+
     }
 }
