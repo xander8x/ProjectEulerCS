@@ -103,17 +103,20 @@ namespace ProjectEuler.Helper
         /// <returns>Sum of factors of <paramref name="x"/>.</returns>
         public static BigInteger SumFactors(this BigInteger x)
         {
-            BigInteger sum = BigInteger.Zero;
+            int sqrtOfNumber = (int)x.Sqrt();
+            BigInteger sum = 1;
 
-            for (BigInteger i = 1; i * i <= x; i++)
+            if (x == sqrtOfNumber * sqrtOfNumber)
             {
-                if (0 == (x % i))
+                sum += sqrtOfNumber;
+                sqrtOfNumber--;
+            }
+
+            for (int i = 2; i <= sqrtOfNumber; i++)
+            {
+                if (x % i == 0)
                 {
-                    sum += i;
-                    if (i != (x / i))
-                    {
-                        sum += x / i;
-                    }
+                    sum = sum + i + (x / i);
                 }
             }
 
