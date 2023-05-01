@@ -24,8 +24,8 @@ namespace ProjectEuler.Helper
         /// <summary>
         /// Check whether input value is palindrome or not.
         /// </summary>
-        /// <param name="value">Value whose check if palindrome is computed.</param>
-        /// <returns>Returns true if the given number is a palindrome, else false.</returns>
+        /// <param name="value">Value whose check if palindrome is evaluted.</param>
+        /// <returns>Returns true if the given number is a palindrome; false otherwise.</returns>
         public static bool IsPalindrome(this BigInteger value)
         {
             bool result = false;
@@ -36,6 +36,16 @@ namespace ProjectEuler.Helper
 
             result = Enumerable.Range(0, endCheck).All(i => valueString[i] == valueString[length - i - 1]);
             return result;
+        }
+
+        /// <summary>
+        /// Check whether input value is abundant or not.
+        /// </summary>
+        /// <param name="value">Value whose check if a abundant number is evaluated.</param>
+        /// <returns>Returns true if the input value is abundant; false otherwise.</returns>
+        public static bool IsAbundant(this BigInteger value)
+        {
+            return (ProjectEulerHelper.SumProperFactors(value) > value);
         }
     }
 }
