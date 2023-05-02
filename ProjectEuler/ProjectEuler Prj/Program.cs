@@ -16,14 +16,26 @@ namespace ProjectEuler
                                 .Where(t => ((ProblemAttributes)t.GetCustomAttributes(typeof(ProblemAttributes), false).First()).IsSolved == false);
 
 
-            foreach (var type in types)
+            if (types.Any())
             {
-                var a = type.GetCustomAttributes().First();
-                var pb = (ProblemBase)Activator.CreateInstance(type);
+                foreach (var type in types)
+                {
+                    var a = type.GetCustomAttributes().First();
+                    var pb = (ProblemBase)Activator.CreateInstance(type);
 
-                pb.Execute();
+                    pb.Execute();
 
-                ShowResult((ProblemAttributes)a, pb);
+                    ShowResult((ProblemAttributes)a, pb);
+                } 
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("############################################");
+                Console.WriteLine("");
+                Console.WriteLine("All problems are solved.");
+                Console.WriteLine("");
+                Console.WriteLine("############################################");
             }
 
             Console.ReadKey();
