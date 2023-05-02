@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ProjectEuler.Helper.Divisors.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Extensions.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Factors.cs" />
     <Compile Include="Helper\ProjectEuler.Helper.Linq.cs" />
