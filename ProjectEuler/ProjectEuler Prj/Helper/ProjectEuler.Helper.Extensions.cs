@@ -78,5 +78,27 @@ namespace ProjectEuler.Helper
         {
             return (ProjectEulerHelper.SumProperDivisors(value) == value);
         }
+
+        /// <summary>
+        /// Check whether input value is a Narcissistic number.
+        /// </summary>
+        /// <param name="value">Value whose check if a narcissistic number is evaluted.</param>
+        /// <param name="exponent">Exponent.</param>
+        /// <returns>Returns true if input value is narcissistic; false otherwise.</returns>
+        /// <seealso cref="https://en.wikipedia.org/wiki/Narcissistic_number"/>
+        public static bool IsNarcissisticNumber(this BigInteger value, int exponent)
+        {
+            BigInteger temp = value;
+            BigInteger sum = BigInteger.Zero;
+            while (temp > 0)
+            {
+                var d = temp % 10;
+
+                sum += BigInteger.Pow(d, exponent);
+
+                temp /= 10;
+            }
+            return sum == value;
+        }
     }
 }
