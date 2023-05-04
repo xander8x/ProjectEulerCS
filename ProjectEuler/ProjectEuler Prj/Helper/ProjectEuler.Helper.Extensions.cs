@@ -100,5 +100,16 @@ namespace ProjectEuler.Helper
             }
             return sum == value;
         }
+
+        /// <summary>
+        /// Check whether input value is a Pandigital number.
+        /// </summary>
+        /// <param name="value">Value whose check if a pandigital number is evaluated.</param>
+        /// <returns>Returns true if a pandigital number; false otherwise.</returns>
+        public static bool IsPandigital(this BigInteger value)
+        {
+            var valueToText = value.ToString();
+            return Enumerable.Range(1, valueToText.Length).Except(valueToText.Select(x => x - 48)).Any() == false;
+        }
     }
 }
