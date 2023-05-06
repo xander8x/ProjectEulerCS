@@ -34,7 +34,7 @@ HINT: Some products can be obtained in more than one way so be sure to only incl
                 {
                     var prod = a * b;
                     var combined = ProjectEulerHelper.ConcatNumbers(ProjectEulerHelper.ConcatNumbers(a, b), prod);
-                    if (combined >= (int)1e8 && combined <= (int)1e9 && combined.IsPandigital())
+                    if (combined >= (int)1e8 && combined <= (int)1e9 && combined.IsPandigital(1))
                     {
                         if (!list.Contains(prod)) list.Add(prod);
                     }

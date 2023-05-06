@@ -106,10 +106,10 @@ namespace ProjectEuler.Helper
         /// </summary>
         /// <param name="value">Value whose check if a pandigital number is evaluated.</param>
         /// <returns>Returns true if a pandigital number; false otherwise.</returns>
-        public static bool IsPandigital(this BigInteger value)
+        public static bool IsPandigital(this BigInteger value, int starting = 0)
         {
             var valueToText = value.ToString();
-            return Enumerable.Range(1, valueToText.Length).Except(valueToText.Select(x => x - 48)).Any() == false;
+            return Enumerable.Range(starting, valueToText.Length).Except(valueToText.Select(x => x - 48)).Any() == false;
         }
     }
 }
