@@ -23,7 +23,50 @@ namespace ProjectEuler.Helper
             }
 
             return result;
-
         }
+
+        /// <summary>
+        /// Concat two integer numbers.
+        /// </summary>
+        public static Func<BigInteger, BigInteger, BigInteger> ConcatNumbers = (a, b) =>
+        {
+            BigInteger c = b;
+            while (c > 0)
+            {
+                a *= 10;
+                c /= 10;
+            }
+
+            return a + b;
+        };
+
+        /// <summary>
+        /// Evalute Greatest Common Divisors (GCD).
+        /// </summary>
+        /// <param name="values">Array of values to evalute GCD.</param>
+        /// <returns>GCD of input values</returns>
+        public static BigInteger GreatestCommonDivisor(BigInteger[] values)
+        {
+            return values.Aggregate(GreatestCommonDivisor);
+        }
+
+        /// <summary>
+        /// Evalute Greatest Common Divisors (GCD).
+        /// </summary>
+        /// <param name="a">First value whose the GDC is computed.</param>
+        /// <param name="b">Second value whose the GDC is computed.</param>
+        /// <returns>GCD of the input values.</returns>
+        public static BigInteger GreatestCommonDivisor(BigInteger a, BigInteger b)
+        {
+            while (a != 0 && b != 0)
+            {
+                if (a > b)
+                    a %= b;
+                else
+                    b %= a;
+            }
+
+            return a | b;
+        }           
     }
 }
