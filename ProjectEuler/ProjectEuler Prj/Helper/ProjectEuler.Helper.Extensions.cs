@@ -111,5 +111,77 @@ namespace ProjectEuler.Helper
             var valueToText = value.ToString();
             return Enumerable.Range(starting, valueToText.Length).Except(valueToText.Select(x => x - 48)).Any() == false;
         }
+
+        public static BigInteger Abs(this BigInteger value)
+        {
+            return value >= 0 ? value : -value;
+        }
+
+        public static List<BigInteger> GetAllCircualRotations(this BigInteger value)
+        {
+            List<BigInteger> result = new List<BigInteger>();
+
+            BigInteger n = value.Abs();
+            if (n < 10)
+            {
+                result.Add(value);
+                return result;
+            }
+
+            int nDigits = value.ToString().ToCharArray().Length;
+            int multiply = (int)Math.Pow(10, nDigits - 1);
+
+            BigInteger current = n;
+            for (int i = 0; i < nDigits; i++)
+            {
+                result.Add(value < 0 ? -current : current);
+                BigInteger firstDigit = current / multiply;
+                BigInteger remainder = current % multiply;
+
+                current = (remainder * 10) + firstDigit;
+            }
+
+            return result;
+        }
+
+        public static List<BigInteger> GetAllPermutations(this BigInteger value)
+        {
+            List<BigInteger> result = new List<BigInteger>();
+            char[] digits = value.ToString().ToCharArray();
+
+            if (digits.Length == 1) return new List<BigInteger> { value };
+            else
+            {
+                HashSet<BigInteger> res = new HashSet<BigInteger>();
+
+                _generatePermutation(digits, 0, res);
+
+                return  new List<BigInteger>(res);
+            }
+        }
+
+        private static void _generatePermutation(char[] digits, int index, HashSet<BigInteger> result)
+        {
+            if(index == digits.Length - 1 )
+            {
+                result.Add(BigInteger.Parse(new string(digits)));
+            }
+            else
+            {
+                for (int i = index; i < digits.Length; i++)
+                {
+                    _exchange(ref digits[index], ref digits[i]);
+                    _generatePermutation(digits, index + 1, result);
+                    _exchange(ref digits[index], ref digits[i]);
+                }
+            }
+        }
+
+        private static void _exchange(ref char a, ref char b)
+        {
+            char c = a;
+            a = b;
+            b = c;
+        }
     }
 }
