@@ -15,7 +15,7 @@ namespace ProjectEuler.Problems._001_050
 Find the sum of all numbers, less than one million, which are palindromic in base  and base .
 
 (Please note that the palindromic number, in either base, may not include leading zeros.)",
-        false,
+        true,
         36)
     ]
     [ProblemSolutionInfo(148, 872187)]
