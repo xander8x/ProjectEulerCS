@@ -113,6 +113,40 @@ namespace ProjectEuler.Helper
             return Enumerable.Range(starting, valueToText.Length).Except(valueToText.Select(x => x - 48)).Any() == false;
         }
 
+
+        public static bool IsPandigitalDigit(this BigInteger number, int n = 9)
+        {
+            if (n < 1 || n > 9) return false;
+
+            string str = number.ToString();
+            if (str.Length != n) return false;
+
+            int expectedMask = (1 << n) - 1; // Bits 0 to n-1 set to 1
+            int mask = 0;
+
+            foreach (char c in str)
+            {
+                int digit = c - '0';
+                if (digit < 1 || digit > n) return false;
+
+                int bit = 1 << (digit - 1);
+                if ((mask & bit) != 0) return false; // Duplicate digit found
+
+                mask |= bit;
+            }
+
+            return mask == expectedMask;
+        }
+
+        public static int DigitCount(this BigInteger number)
+        {
+            if (number.IsZero) return 1;
+            if (number.IsOne) return 1;
+
+            number = BigInteger.Abs(number);
+            return (int)BigInteger.Log10(number) + 1;
+        }
+
         public static BigInteger Abs(this BigInteger value)
         {
             return value >= 0 ? value : -value;
@@ -159,6 +193,24 @@ namespace ProjectEuler.Helper
 
                 return  new List<BigInteger>(res);
             }
+        }
+
+        public static BigInteger Append(this BigInteger original, int toAppend)
+        {
+            if (toAppend < 0)
+                throw new ArgumentOutOfRangeException(nameof(toAppend));
+
+            if (toAppend == 0)
+                return original * 10;
+
+            int multiplier = 1;
+            int temp = toAppend;
+            while (temp > 0)
+            {
+                multiplier *= 10;
+                temp /= 10;
+            }
+            return (original * multiplier) + toAppend;
         }
 
         public static IEnumerable<BigInteger> GetLeftTrucates(this BigInteger value)
