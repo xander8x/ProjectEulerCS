@@ -21,6 +21,17 @@ namespace ProjectEuler.Helper
         }
 
         /// <summary>
+        /// Generates a sequence of BigInteger numbers within a specified range.
+        /// </summary>
+        /// <param name="start">The value of the first integer in the sequence.</param>
+        /// <param name="count">The number of sequential integers to generate.</param>
+        /// <returns>An IEnumerable<BigInteger> in C# that contains a range of sequential BigInteger numbers.</returns>
+        public static IEnumerable<BigInteger> Range(int start, int count)
+        {
+            return Enumerable.Range(start, count).Select(x => (BigInteger)x);
+        }
+
+        /// <summary>
         /// Generates a sequence of BigInteger numbers within a specified range using a step.
         /// </summary>
         /// <param name="start">The value of the first integer in the sequence.</param>

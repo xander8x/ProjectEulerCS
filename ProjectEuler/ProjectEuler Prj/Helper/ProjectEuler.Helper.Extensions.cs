@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -160,6 +161,73 @@ namespace ProjectEuler.Helper
             }
         }
 
+
+        public static BigInteger ConvertToBase(this BigInteger value, uint targetBase)
+        {
+            Func<int> _shift = () =>
+            {
+                if (targetBase == 2) return 1;
+                else if (targetBase == 4) return 2;
+                else if (targetBase == 8) return 3;
+                else return 0;
+            };
+
+            if (targetBase < 2 || targetBase > 10)
+            {
+                throw new ArgumentOutOfRangeException(nameof(targetBase), "The base must be between 2 and 10.");
+            }
+
+            if (value.IsZero) return BigInteger.Zero;
+
+            bool isNegative = value < 0;
+            BigInteger current = BigInteger.Abs(value);
+
+            BigInteger result = BigInteger.Zero;
+            BigInteger multiplier = BigInteger.One;
+
+            uint rem = targetBase - 1;
+
+            int shift = (int)Math.Log(targetBase, 2);
+
+            switch (targetBase)
+            {
+                case 2:
+                case 4:
+                case 8:
+                    while (current > 0)
+                    {
+                        int remainder = (int)(current & rem);
+                        if (remainder != 0)
+                        {
+                            result += remainder * multiplier;
+                        }
+                        current >>= shift;
+                        multiplier *= 10;
+                    }
+                    break;
+
+                case 10:
+                    return value;
+
+                default:
+                    while (current > 0)
+                    {
+                        current = BigInteger.DivRem(current, targetBase, out BigInteger remainder);
+                        if (!remainder.IsZero)
+                        {
+                            result += remainder * multiplier;
+                        }
+                        multiplier *= 10;
+                    }
+                    break;
+            }
+            return isNegative ? -result : result;
+        }
+
+
+        // ============================
+        // ============================
+        // ============================
         private static void _generatePermutation(char[] digits, int index, HashSet<BigInteger> result)
         {
             if(index == digits.Length - 1 )
