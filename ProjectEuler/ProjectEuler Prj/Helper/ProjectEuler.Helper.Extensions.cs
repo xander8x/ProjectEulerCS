@@ -161,6 +161,29 @@ namespace ProjectEuler.Helper
             }
         }
 
+        public static IEnumerable<BigInteger> GetLeftTrucates(this BigInteger value)
+        {
+            var s = value.ToString();
+            List<BigInteger> res = new List<BigInteger>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                res.Add(BigInteger.Parse(string.Join("", s.ToCharArray().Skip(i))));
+            }
+
+            return res;
+        }
+
+        public static IEnumerable<BigInteger> GetRightTrucates(this BigInteger value)
+        {
+            var s = value.ToString();
+            List<BigInteger> res = new List<BigInteger>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                res.Add(BigInteger.Parse(string.Join("", s.ToCharArray().Take(s.Length - i))));
+            }
+
+            return res;
+        }
 
         public static BigInteger ConvertToBase(this BigInteger value, uint targetBase)
         {
