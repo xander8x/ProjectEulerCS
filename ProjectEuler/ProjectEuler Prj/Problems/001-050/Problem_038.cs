@@ -23,7 +23,7 @@ The same can be achieved by starting with 9 and multiplying by 1, 2, 3, 4, and 5
 
 What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer with (1,2, … , n) where n > 1?",
         true,
-        37)
+        38)
     ]
     [ProblemSolutionInfo(36, 932718654)]
     public class Problem038 : ProblemBase
