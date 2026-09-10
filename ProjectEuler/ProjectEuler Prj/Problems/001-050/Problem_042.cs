@@ -48,8 +48,6 @@ Using words.txt (linked file), a 16K text file containing nearly two-thousand co
                 return a.ToArray().Select(x => (BigInteger)(x - 64)).Aggregate(BigInteger.Add);
             };
 
-            var test = new BigInteger(55).IsTriangular();
-
             return words.Select(x => _T(x)).Count(x => x.IsTriangular());
         }
     }
