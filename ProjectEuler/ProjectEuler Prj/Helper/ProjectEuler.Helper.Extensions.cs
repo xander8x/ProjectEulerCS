@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,16 @@ namespace ProjectEuler.Helper
 {
     public static partial class ProjectEulerHelper
     {
+        public static bool IsTriangular(this BigInteger number)
+        {
+            BigInteger value = 1 + 8 * number;
+        
+            int s = (int)Math.Round(value.Sqrt());
+
+            return s * s == 1 + 8 * number && (-1 + s) % 2 == 0;
+        }
+
+
         /// <summary>
         /// Returns the square root of a number.
         /// </summary>
